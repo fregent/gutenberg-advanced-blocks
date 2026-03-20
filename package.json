@@ -2,7 +2,6 @@
   "name": "gutenberg-advanced-blocks",
   "version": "1.0.0",
   "description": "Une suite de blocs Gutenberg avancés et réutilisables avec des options de personnalisation visuelles dans l'éditeur.",
-  "main": "index.js",
   "scripts": {
     "start": "wp-scripts start",
     "build": "wp-scripts build",
@@ -14,8 +13,8 @@
     "url": "git+https://github.com/fregent/gutenberg-advanced-blocks.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "fregent",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fregent/gutenberg-advanced-blocks/issues"
   },

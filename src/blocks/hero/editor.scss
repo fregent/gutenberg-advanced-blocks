@@ -1,0 +1,19 @@
+.wp-block-gab-hero {
+
+  // Placeholder visuel quand aucune image n'est définie
+  &:not([style*="url"]) {
+    background-color: #1e1e1e;
+    min-height: 300px;
+  }
+
+  // RichText — ne pas hériter du style par défaut de l'éditeur
+  .gab-hero__title,
+  .gab-hero__subtitle {
+    color: #fff;
+
+    &.block-editor-rich-text__editable:focus {
+      outline: 2px dashed rgba(255, 255, 255, 0.5);
+      outline-offset: 4px;
+    }
+  }
+}

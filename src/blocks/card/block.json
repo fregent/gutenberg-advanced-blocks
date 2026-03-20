@@ -1,26 +1,26 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "gab/card",
-  "version": "1.0.0",
-  "title": "GAB Card",
-  "category": "layout",
-  "description": "Un bloc Card avec titre, description, lien et vignette.",
-  "textdomain": "gab",
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "attributes": {
-    "title": { "type": "string", "default": "Titre de la carte" },
-    "text": { "type": "string", "default": "Description de la carte." },
-    "linkUrl": { "type": "string", "default": "" },
-    "linkLabel": { "type": "string", "default": "En savoir plus" },
-    "imageUrl": { "type": "string", "default": "" },
-    "imageId": { "type": "number", "default": 0 },
-    "borderRadius": { "type": "number", "default": 8 },
-    "hasShadow": { "type": "boolean", "default": true }
-  },
-  "supports": {
-    "html": false
-  }
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "gab/card",
+    "version": "1.0.0",
+    "title": "GAB Card",
+    "category": "layout",
+    "description": "Un bloc Card avec titre, description, lien et vignette.",
+    "textdomain": "gab",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "title":        { "type": "string",  "default": "Titre de la carte" },
+        "text":         { "type": "string",  "default": "Description de la carte." },
+        "linkUrl":      { "type": "string",  "default": "" },
+        "linkLabel":    { "type": "string",  "default": "En savoir plus" },
+        "imageUrl":     { "type": "string",  "default": "" },
+        "imageId":      { "type": "number",  "default": 0 },
+        "borderRadius": { "type": "number",  "default": 8 },
+        "hasShadow":    { "type": "boolean", "default": true }
+    },
+    "supports": {
+        "html": false
+    }
 }

@@ -1,14 +1,15 @@
 .wp-block-gab-card {
-  &:not(:has(img)) .gab-card__image {
-    display: none;
-  }
 
-  .gab-card__title,
-  .gab-card__text,
-  .gab-card__link {
-    &.block-editor-rich-text__editable:focus {
-      outline: 2px dashed #007cba;
-      outline-offset: 2px;
+    &:not(:has(img)) .gab-card__image {
+        display: none;
     }
-  }
+
+    .gab-card__title,
+    .gab-card__text,
+    .gab-card__link {
+        &.block-editor-rich-text__editable:focus {
+            outline: 2px dashed #007cba;
+            outline-offset: 2px;
+        }
+    }
 }

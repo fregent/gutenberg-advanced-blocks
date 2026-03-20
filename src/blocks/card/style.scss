@@ -1,52 +1,52 @@
 .wp-block-gab-card {
-  overflow: hidden;
-  background: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &.has-shadow {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
-  }
-
-  &.has-shadow:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  }
-
-  .gab-card__image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
     overflow: hidden;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    &.has-shadow {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
     }
-  }
 
-  .gab-card__body {
-    padding: 1.5rem;
-  }
+    &.has-shadow:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
 
-  .gab-card__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0 0 0.75rem;
-    line-height: 1.3;
-  }
+    .gab-card__image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
 
-  .gab-card__text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0 0 1.25rem;
-    opacity: 0.8;
-  }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
 
-  .gab-card__link {
-    display: inline-block;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: underline;
-  }
+    .gab-card__body {
+        padding: 1.5rem;
+    }
+
+    .gab-card__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0 0 0.75rem;
+        line-height: 1.3;
+    }
+
+    .gab-card__text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0 0 1.25rem;
+        opacity: 0.8;
+    }
+
+    .gab-card__link {
+        display: inline-block;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: underline;
+    }
 }

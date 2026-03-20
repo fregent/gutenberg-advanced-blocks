@@ -8,7 +8,7 @@
     "build": "wp-scripts build",
     "env:start": "wp-env start",
     "env:stop": "wp-env stop"
-  },git
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fregent/gutenberg-advanced-blocks.git"

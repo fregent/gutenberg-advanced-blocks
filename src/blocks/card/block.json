@@ -11,16 +11,16 @@
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "attributes": {
-    "title":        { "type": "string",  "default": "Titre de la carte" },
-    "text":         { "type": "string",  "default": "Description de la carte." },
-    "linkUrl":      { "type": "string",  "default": "" },
-    "linkLabel":    { "type": "string",  "default": "En savoir plus" },
-    "imageUrl":     { "type": "string",  "default": "" },
-    "imageId":      { "type": "number",  "default": 0 },
-    "borderRadius": { "type": "number",  "default": 8 },
-    "hasShadow":    { "type": "boolean", "default": true }
+    "title": { "type": "string", "default": "Titre de la carte" },
+    "text": { "type": "string", "default": "Description de la carte." },
+    "linkUrl": { "type": "string", "default": "" },
+    "linkLabel": { "type": "string", "default": "En savoir plus" },
+    "imageUrl": { "type": "string", "default": "" },
+    "imageId": { "type": "number", "default": 0 },
+    "borderRadius": { "type": "number", "default": 8 },
+    "hasShadow": { "type": "boolean", "default": true }
   },
   "supports": {
-    "html": false,
+    "html": false
   }
 }

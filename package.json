@@ -1,0 +1,27 @@
+{
+  "name": "gutenberg-advanced-blocks",
+  "version": "1.0.0",
+  "description": "Une suite de blocs Gutenberg avancés et réutilisables avec des options de personnalisation visuelles dans l'éditeur.",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop"
+  },git
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fregent/gutenberg-advanced-blocks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fregent/gutenberg-advanced-blocks/issues"
+  },
+  "homepage": "https://github.com/fregent/gutenberg-advanced-blocks#readme",
+  "devDependencies": {
+    "@wordpress/env": "^11.2.0",
+    "@wordpress/scripts": "^31.7.0"
+  }
+}

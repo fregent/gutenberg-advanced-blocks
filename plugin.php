@@ -4,7 +4,7 @@
  * Plugin URI:        https://github.com/fregent/gutenberg-advanced-blocks
  * Description:       Une suite de blocs Gutenberg avancés et réutilisables.
  * Version:           1.0.0
- * Author:            fregent
+ * Author:            Ton Nom
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       gab
@@ -22,13 +22,13 @@ define( 'GAB_URL', plugin_dir_url( __FILE__ ) );
  * Enregistre tous les blocs du plugin.
  */
 function gab_register_blocks(): void {
-  $blocks = [ 'hero', 'section', 'card', 'accordion', 'tabs' ];
+    $blocks = [ 'hero', 'section', 'card', 'accordion', 'tabs' ];
 
-  foreach ( $blocks as $block ) {
-      $block_path = GAB_PATH . 'build/blocks/' . $block;
-      if ( file_exists( $block_path . '/block.json' ) ) {
-          register_block_type( $block_path );
-      }
-  }
+    foreach ( $blocks as $block ) {
+        $block_path = GAB_PATH . 'build/blocks/' . $block;
+        if ( file_exists( $block_path . '/block.json' ) ) {
+            register_block_type( $block_path );
+        }
+    }
 }
 add_action( 'init', 'gab_register_blocks' );

@@ -1,0 +1,17 @@
+.wp-block-gab-accordion {
+
+    // En éditeur, tous les panneaux sont visibles simultanément
+    .gab-accordion-item {
+
+        &__body {
+            // On force l'affichage — le hidden ne doit pas masquer en éditeur
+            display: block !important;
+        }
+
+        &__header {
+            // Curseur par défaut — le clic est désactivé en éditeur
+            cursor: default;
+            pointer-events: none;
+        }
+    }
+}

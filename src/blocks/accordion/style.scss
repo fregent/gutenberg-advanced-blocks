@@ -1,0 +1,77 @@
+.wp-block-gab-accordion {
+    // Conteneur principal — pas de style visuel, juste la structure
+    width: 100%;
+}
+
+.gab-accordion-item {
+    // Séparation entre les items
+    border-bottom: 1px solid #e0e0e0;
+
+    &:first-child {
+        border-top: 1px solid #e0e0e0;
+    }
+
+    &__header {
+        // Reset du bouton natif
+        appearance: none;
+        background: none;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 0;
+        gap: 1rem;
+
+        text-align: left;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    &__title {
+        flex: 1;
+    }
+
+    &__icon {
+        // Rotation via JS quand le panneau est ouvert
+        display: inline-block;
+        font-size: 1.25rem;
+        font-weight: 300;
+        transition: transform 0.25s ease;
+        flex-shrink: 0;
+    }
+
+    &__body {
+        overflow: hidden;
+        padding-bottom: 1.25rem;
+
+        // hidden géré par l'attribut HTML hidden — on surcharge juste l'animation
+        &:not([hidden]) {
+            animation: gab-accordion-open 0.25s ease;
+        }
+    }
+
+    &__content {
+        margin: 0;
+        line-height: 1.7;
+        opacity: 0.8;
+    }
+
+    // État ouvert — icône pivotée
+    &[data-open="true"] &__icon {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes gab-accordion-open {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -8,6 +8,7 @@
     "description": "Un accordéon composé de panneaux dépliables.",
     "textdomain": "gab",
     "editorScript": "file:./index.js",
+    "viewScript": "file:./view.js",  
     "editorStyle": "file:./index.css",
     "style": "file:./style-index.css",
     "attributes": {

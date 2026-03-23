@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "gab/accordion",
+    "version": "1.0.0",
+    "title": "GAB Accordion",
+    "category": "layout",
+    "description": "Un accordéon composé de panneaux dépliables.",
+    "textdomain": "gab",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "allowMultiple": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "supports": {
+        "html": false
+    }
+}

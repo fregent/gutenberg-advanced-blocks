@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "gab/accordion-item",
+    "version": "1.0.0",
+    "title": "GAB Accordion Item",
+    "category": "layout",
+    "description": "Un panneau individuel d'un accordéon.",
+    "textdomain": "gab",
+    "parent": [ "gab/accordion" ],
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Question ou titre"
+        },
+        "content": {
+            "type": "string",
+            "default": ""
+        },
+        "initialOpen": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "supports": {
+        "html": false
+    }
+}

@@ -22,7 +22,7 @@ define( 'GAB_URL', plugin_dir_url( __FILE__ ) );
  * Enregistre tous les blocs du plugin.
  */
 function gab_register_blocks(): void {
-    $blocks = [ 'hero', 'section', 'card', 'accordion', 'tabs' ];
+    $blocks = [ 'hero', 'section', 'card', 'accordion', 'accordion-item', 'tabs' ];
 
     foreach ( $blocks as $block ) {
         $block_path = GAB_PATH . 'build/blocks/' . $block;

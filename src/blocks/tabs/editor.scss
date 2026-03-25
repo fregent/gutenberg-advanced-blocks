@@ -1,0 +1,23 @@
+.wp-block-gab-tabs {
+
+    // En éditeur, tous les panels sont visibles — pas de navigation active
+    .gab-tab-item {
+        border-left: 3px solid currentColor;
+        opacity: 0.7;
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .gab-tab-item__label-wrapper {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        opacity: 0.6;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}

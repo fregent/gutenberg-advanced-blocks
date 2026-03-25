@@ -1,0 +1,50 @@
+.wp-block-gab-tabs {
+    width: 100%;
+
+    .gab-tabs__nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+
+        // Séparateur visuel entre la nav et les panels
+        border-bottom: 2px solid currentColor;
+        opacity: 0.15;
+        margin-bottom: 0;
+    }
+
+    // On sort du scope opacity pour les boutons
+    .gab-tabs__nav-btn {
+        // Reset bouton natif
+        appearance: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        opacity: 0.55;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px; // Chevauche la bordure du nav pour l'effet actif
+        transition: opacity 0.2s ease, border-color 0.2s ease;
+
+        &:hover {
+            opacity: 0.85;
+        }
+
+        &.is-active {
+            opacity: 1;
+            // La bordure active écrase celle du conteneur nav
+            border-bottom-color: currentColor;
+        }
+    }
+
+    .gab-tabs__panels {
+        padding-top: 1.5rem;
+    }
+
+    .gab-tab-item__content {
+        margin: 0;
+        line-height: 1.7;
+    }
+}

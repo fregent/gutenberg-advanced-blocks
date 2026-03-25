@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "gab/tabs",
+    "version": "1.0.0",
+    "title": "GAB Tabs",
+    "category": "layout",
+    "description": "Un groupe d'onglets avec navigation.",
+    "textdomain": "gab",
+    "editorScript": "file:./index.js",
+    "viewScript": "file:./view.js",  
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "defaultTab": {
+            "type": "number",
+            "default": 0
+        }
+    },
+    "supports": {
+        "html": false
+    }
+}

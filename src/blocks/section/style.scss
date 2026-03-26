@@ -1,0 +1,12 @@
+.wp-block-gab-section {
+    width: 100%;
+
+    // Le wrapper interne est déjà centré via style inline —
+    // on gère ici uniquement les ajustements visuels
+    > div {
+        width: 100%;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        box-sizing: border-box;
+    }
+}

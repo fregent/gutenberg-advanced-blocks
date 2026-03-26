@@ -1,0 +1,9 @@
+.wp-block-gab-section {
+
+    // Visualisation de la zone de contenu en éditeur
+    > div > div {
+        outline: 1px dashed var(--wp-admin-theme-color, #007cba);
+        outline-offset: 4px;
+        min-height: 80px;
+    }
+}

@@ -6,6 +6,9 @@ function initTabs() {
 
     tabGroups.forEach( ( group ) => {
         const defaultTab = parseInt( group.dataset.defaultTab ?? '0', 10 );
+        // Applique le style comme classe CSS sur le bloc — le SCSS fait le reste
+        const tabStyle   = group.dataset.tabStyle ?? 'underline';
+        group.classList.add( `is-style-${ tabStyle }` );
         const items      = group.querySelectorAll( '.gab-tab-item' );
         const nav        = group.querySelector( '.gab-tabs__nav' );
 

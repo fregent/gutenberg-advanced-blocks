@@ -1,42 +1,22 @@
 .wp-block-gab-tabs {
     width: 100%;
 
+    // --- Style de base partagé ---
     .gab-tabs__nav {
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
-
-        // Séparateur visuel entre la nav et les panels
-        border-bottom: 2px solid currentColor;
-        opacity: 0.15;
         margin-bottom: 0;
     }
 
-    // On sort du scope opacity pour les boutons
     .gab-tabs__nav-btn {
-        // Reset bouton natif
         appearance: none;
         background: none;
         border: none;
         cursor: pointer;
-
-        padding: 0.75rem 1.25rem;
         font-size: 0.95rem;
         font-weight: 600;
-        opacity: 0.55;
-        border-bottom: 2px solid transparent;
-        margin-bottom: -2px; // Chevauche la bordure du nav pour l'effet actif
-        transition: opacity 0.2s ease, border-color 0.2s ease;
-
-        &:hover {
-            opacity: 0.85;
-        }
-
-        &.is-active {
-            opacity: 1;
-            // La bordure active écrase celle du conteneur nav
-            border-bottom-color: currentColor;
-        }
+        transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .gab-tabs__panels {
@@ -46,5 +26,85 @@
     .gab-tab-item__content {
         margin: 0;
         line-height: 1.7;
+    }
+
+    // --- Underline (défaut) ---
+    &.is-style-underline {
+        .gab-tabs__nav {
+            border-bottom: 2px solid currentColor;
+            opacity: 1;
+        }
+
+        .gab-tabs__nav-btn {
+            padding: 0.75rem 1.25rem;
+            opacity: 0.55;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+
+            &:hover   { opacity: 0.85; }
+            &.is-active {
+                opacity: 1;
+                border-bottom-color: currentColor;
+            }
+        }
+    }
+
+    // --- Pills ---
+    &.is-style-pills {
+        .gab-tabs__nav {
+            border-bottom: none;
+            gap: 8px;
+        }
+
+        .gab-tabs__nav-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            opacity: 0.6;
+            border: 1.5px solid transparent;
+
+            &:hover   { opacity: 0.85; }
+            &.is-active {
+                opacity: 1;
+                // Fond semi-transparent — fonctionne sur n'importe quelle couleur de fond
+                background: currentColor;
+                color: canvas;
+                border-color: currentColor;
+            }
+        }
+
+        .gab-tabs__panels {
+            padding-top: 1rem;
+        }
+    }
+
+    // --- Bordered ---
+    &.is-style-bordered {
+        .gab-tabs__nav {
+            border-bottom: none;
+            gap: 0;
+        }
+
+        .gab-tabs__nav-btn {
+            padding: 0.65rem 1.25rem;
+            opacity: 0.55;
+            border: 1.5px solid transparent;
+            border-bottom: none;
+            margin-bottom: -1px;
+
+            &:hover { opacity: 0.85; }
+
+            &.is-active {
+                opacity: 1;
+                border-color: currentColor;
+                border-bottom-color: canvas;
+                // Le fond canvas masque la bordure basse du conteneur
+                background: canvas;
+            }
+        }
+
+        .gab-tabs__panels {
+            border: 1.5px solid currentColor;
+            padding: 1.5rem;
+        }
     }
 }

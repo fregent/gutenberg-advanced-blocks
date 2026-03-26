@@ -15,6 +15,10 @@
         "defaultTab": {
             "type": "number",
             "default": 0
+        },
+        "tabStyle": {
+            "type": "string",
+            "default": "underline"
         }
     },
     "supports": {

@@ -1,4 +1,3 @@
-// Table des icônes — doit correspondre exactement à celle de edit.js
 const ICONS = {
     plus:   { open: '+',  close: '−' },
     arrow:  { open: '›',  close: '‹' },
@@ -11,10 +10,13 @@ function initAccordions() {
 
     accordions.forEach( ( accordion ) => {
         const allowMultiple = accordion.dataset.allowMultiple === 'true';
-        // Récupère l'icône choisie — fallback sur 'plus' si absent
-        const iconKey       = accordion.dataset.icon ?? 'plus';
+        const iconKey       = accordion.dataset.icon      ?? 'plus';
+        const animation     = accordion.dataset.animation ?? 'slide';
         const icon          = ICONS[ iconKey ] ?? ICONS.plus;
         const items         = accordion.querySelectorAll( '.gab-accordion-item' );
+
+        // Applique la classe d'animation sur le conteneur — le SCSS fait le reste
+        accordion.classList.add( `is-animation-${ animation }` );
 
         items.forEach( ( item ) => {
             const header   = item.querySelector( '.gab-accordion-item__header' );
@@ -23,7 +25,6 @@ function initAccordions() {
 
             if ( ! header || ! body ) return;
 
-            // Initialise l'icône selon l'état du panneau
             if ( iconSpan ) {
                 iconSpan.textContent = item.dataset.open === 'true'
                     ? icon.close
@@ -35,9 +36,7 @@ function initAccordions() {
 
                 if ( ! allowMultiple ) {
                     items.forEach( ( otherItem ) => {
-                        if ( otherItem !== item ) {
-                            closeItem( otherItem, icon );
-                        }
+                        if ( otherItem !== item ) closeItem( otherItem, icon );
                     } );
                 }
 
@@ -55,8 +54,6 @@ function openItem( item, icon ) {
     item.dataset.open = 'true';
     body.removeAttribute( 'hidden' );
     header.setAttribute( 'aria-expanded', 'true' );
-
-    // Met à jour l'icône vers l'état fermé (action disponible = fermer)
     if ( iconSpan ) iconSpan.textContent = icon.close;
 }
 
@@ -68,8 +65,6 @@ function closeItem( item, icon ) {
     item.dataset.open = 'false';
     body.setAttribute( 'hidden', '' );
     header.setAttribute( 'aria-expanded', 'false' );
-
-    // Met à jour l'icône vers l'état ouvert (action disponible = ouvrir)
     if ( iconSpan ) iconSpan.textContent = icon.open;
 }
 

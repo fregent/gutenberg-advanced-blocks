@@ -8,10 +8,11 @@ const TEMPLATE = [
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
-    const { defaultTab, tabStyle, textColor, backgroundColor, fontSize } = attributes;
+    const { defaultTab, tabStyle, textColor, backgroundColor, fontSize, animation } = attributes;
 
     const blockProps = useBlockProps( {
-        'data-tab-style': tabStyle,
+        'data-tab-style':  tabStyle,
+        'data-animation':  animation,
         style: {
             color:           textColor       || undefined,
             backgroundColor: backgroundColor || undefined,
@@ -66,6 +67,15 @@ export default function Edit( { attributes, setAttributes } ) {
                             { label: 'Bordered',  value: 'bordered' },
                         ] }
                         onChange={ ( value ) => setAttributes( { tabStyle: value } ) }
+                    />
+                    <SelectControl
+                        label={ __( 'Animation des panels', 'gab' ) }
+                        value={ animation }
+                        options={ [
+                            { label: 'Fondu (fade)', value: 'fade' },
+                            { label: 'Aucune',       value: 'none' },
+                        ] }
+                        onChange={ ( value ) => setAttributes( { animation: value } ) }
                     />
                 </PanelBody>
             </InspectorControls>

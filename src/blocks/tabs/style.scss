@@ -28,6 +28,26 @@
         line-height: 1.7;
     }
 
+    // --- Animations des panels ---
+    .is-animation-fade .gab-tab-item__panel.is-entering {
+        animation: gab-tabs-fade 0.25s ease;
+    }
+
+    .is-animation-none .gab-tab-item__panel {
+        animation: none;
+    }
+
+    @media ( prefers-reduced-motion: reduce ) {
+        .gab-tab-item__panel {
+            animation: none !important;
+        }
+    }
+
+    @keyframes gab-tabs-fade {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
     // --- Underline (défaut) ---
     &.is-style-underline {
         .gab-tabs__nav {

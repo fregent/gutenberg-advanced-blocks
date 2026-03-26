@@ -15,10 +15,12 @@ const ICONS = {
 };
 
 export default function Edit( { attributes, setAttributes } ) {
-    const { allowMultiple, icon, textColor, backgroundColor, fontSize } = attributes;
+    const { allowMultiple, icon, textColor, backgroundColor, fontSize, animation } = attributes;
 
+    // Dans le blockProps
     const blockProps = useBlockProps( {
-        'data-icon': icon,
+        'data-icon':      icon,
+        'data-animation': animation,
         style: {
             color:           textColor       || undefined,
             backgroundColor: backgroundColor || undefined,
@@ -58,6 +60,16 @@ export default function Edit( { attributes, setAttributes } ) {
                         label={ __( 'Autoriser plusieurs panneaux ouverts', 'gab' ) }
                         checked={ allowMultiple }
                         onChange={ ( value ) => setAttributes( { allowMultiple: value } ) }
+                    />
+                    <SelectControl
+                        label={ __( 'Animation', 'gab' ) }
+                        value={ animation }
+                        options={ [
+                            { label: 'Glissement (slide)', value: 'slide' },
+                            { label: 'Fondu (fade)',       value: 'fade'  },
+                            { label: 'Aucune',             value: 'none'  },
+                        ] }
+                        onChange={ ( value ) => setAttributes( { animation: value } ) }
                     />
                 </PanelBody>
                 <PanelBody title={ __( 'Icône', 'gab' ) }>

@@ -6,15 +6,17 @@ function initTabs() {
 
     tabGroups.forEach( ( group ) => {
         const defaultTab = parseInt( group.dataset.defaultTab ?? '0', 10 );
-        // Applique le style comme classe CSS sur le bloc — le SCSS fait le reste
-        const tabStyle   = group.dataset.tabStyle ?? 'underline';
+        const tabStyle   = group.dataset.tabStyle  ?? 'underline';
+        const animation  = group.dataset.animation ?? 'fade';
+
         group.classList.add( `is-style-${ tabStyle }` );
-        const items      = group.querySelectorAll( '.gab-tab-item' );
-        const nav        = group.querySelector( '.gab-tabs__nav' );
+        group.classList.add( `is-animation-${ animation }` );
+
+        const items = group.querySelectorAll( '.gab-tab-item' );
+        const nav   = group.querySelector( '.gab-tabs__nav' );
 
         if ( ! nav || ! items.length ) return;
 
-        // Construit les boutons de navigation à partir des data-label de chaque item
         items.forEach( ( item, index ) => {
             const label  = item.dataset.label ?? `Onglet ${ index + 1 }`;
             const button = document.createElement( 'button' );
@@ -25,11 +27,9 @@ function initTabs() {
             button.setAttribute( 'aria-selected', 'false' );
 
             button.addEventListener( 'click', () => activateTab( group, index ) );
-
             nav.appendChild( button );
         } );
 
-        // Active l'onglet par défaut défini dans l'éditeur
         activateTab( group, defaultTab );
     } );
 }
@@ -45,7 +45,6 @@ function activateTab( group, index ) {
     const buttons = group.querySelectorAll( '.gab-tabs__nav-btn' );
     const panels  = group.querySelectorAll( '.gab-tab-item__panel' );
 
-    // Réinitialise tous les états
     buttons.forEach( ( btn ) => {
         btn.setAttribute( 'aria-selected', 'false' );
         btn.classList.remove( 'is-active' );
@@ -53,9 +52,10 @@ function activateTab( group, index ) {
 
     panels.forEach( ( panel ) => {
         panel.setAttribute( 'hidden', '' );
+        // Retire la classe d'animation pour permettre de la rejouer au prochain clic
+        panel.classList.remove( 'is-entering' );
     } );
 
-    // Active l'onglet cible — fallback sur 0 si l'index est hors limites
     const safeIndex = index < items.length ? index : 0;
 
     if ( buttons[ safeIndex ] ) {
@@ -65,6 +65,9 @@ function activateTab( group, index ) {
 
     if ( panels[ safeIndex ] ) {
         panels[ safeIndex ].removeAttribute( 'hidden' );
+        // Force le reflow avant d'ajouter la classe — sinon l'animation ne se rejoue pas
+        void panels[ safeIndex ].offsetWidth;
+        panels[ safeIndex ].classList.add( 'is-entering' );
     }
 }
 

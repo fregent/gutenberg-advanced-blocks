@@ -31,6 +31,10 @@
         "fontSize": {
             "type": "number",
             "default": 16
+        },
+        "animation": {
+            "type": "string",
+            "default": "fade"
         }
     },
     "supports": {

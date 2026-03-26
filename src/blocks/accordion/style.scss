@@ -47,9 +47,42 @@
         overflow: hidden;
         padding-bottom: 1.25rem;
 
-        // hidden géré par l'attribut HTML hidden — on surcharge juste l'animation
-        &:not([hidden]) {
-            animation: gab-accordion-open 0.25s ease;
+        // --- Slide (défaut) ---
+        .is-animation-slide .gab-accordion-item__body:not([hidden]) {
+            animation: gab-accordion-slide 0.25s ease;
+        }
+
+        // --- Fade ---
+        .is-animation-fade .gab-accordion-item__body:not([hidden]) {
+            animation: gab-accordion-fade 0.3s ease;
+        }
+
+        // --- None — pas d'animation, respecte prefers-reduced-motion ---
+        .is-animation-none .gab-accordion-item__body {
+            animation: none;
+        }
+
+        // Respecte la préférence système de réduction de mouvement
+        @media ( prefers-reduced-motion: reduce ) {
+            .gab-accordion-item__body {
+                animation: none !important;
+            }
+        }
+
+        @keyframes gab-accordion-slide {
+            from {
+                opacity: 0;
+                transform: translateY( -8px );
+            }
+            to {
+                opacity: 1;
+                transform: translateY( 0 );
+            }
+        }
+
+        @keyframes gab-accordion-fade {
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
     }
 

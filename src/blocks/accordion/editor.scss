@@ -1,17 +1,25 @@
 .wp-block-gab-accordion {
 
-    // En éditeur, tous les panneaux sont visibles simultanément
     .gab-accordion-item {
 
         &__body {
-            // On force l'affichage — le hidden ne doit pas masquer en éditeur
             display: block !important;
         }
 
         &__header {
-            // Curseur par défaut — le clic est désactivé en éditeur
             cursor: default;
+            // On retire pointer-events: none du header entier
+            // et on cible uniquement l'icône qui n'a pas besoin d'être cliquable
+        }
+
+        &__icon {
             pointer-events: none;
+        }
+
+        &__title {
+            // On s'assure que le RichText reste interactif
+            pointer-events: all;
+            cursor: text;
         }
     }
 }

@@ -12,6 +12,10 @@
     "editorStyle": "file:./index.css",
     "style": "file:./style-index.css",
     "attributes": {
+        "icon": {
+            "type": "string",
+            "default": "plus"
+        },
         "allowMultiple": {
             "type": "boolean",
             "default": false

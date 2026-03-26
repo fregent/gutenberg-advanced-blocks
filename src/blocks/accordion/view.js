@@ -1,65 +1,76 @@
-/**
- * Initialise tous les accordéons présents dans la page.
- * Appelé au DOMContentLoaded pour s'assurer que le HTML est prêt.
- */
+// Table des icônes — doit correspondre exactement à celle de edit.js
+const ICONS = {
+    plus:   { open: '+',  close: '−' },
+    arrow:  { open: '›',  close: '‹' },
+    caret:  { open: '▾',  close: '▴' },
+    circle: { open: '●',  close: '○' },
+};
+
 function initAccordions() {
     const accordions = document.querySelectorAll( '.wp-block-gab-accordion' );
 
     accordions.forEach( ( accordion ) => {
         const allowMultiple = accordion.dataset.allowMultiple === 'true';
-        const items = accordion.querySelectorAll( '.gab-accordion-item' );
+        // Récupère l'icône choisie — fallback sur 'plus' si absent
+        const iconKey       = accordion.dataset.icon ?? 'plus';
+        const icon          = ICONS[ iconKey ] ?? ICONS.plus;
+        const items         = accordion.querySelectorAll( '.gab-accordion-item' );
 
         items.forEach( ( item ) => {
-            const header = item.querySelector( '.gab-accordion-item__header' );
-            const body   = item.querySelector( '.gab-accordion-item__body' );
+            const header   = item.querySelector( '.gab-accordion-item__header' );
+            const body     = item.querySelector( '.gab-accordion-item__body' );
+            const iconSpan = item.querySelector( '.gab-accordion-item__icon' );
 
             if ( ! header || ! body ) return;
+
+            // Initialise l'icône selon l'état du panneau
+            if ( iconSpan ) {
+                iconSpan.textContent = item.dataset.open === 'true'
+                    ? icon.close
+                    : icon.open;
+            }
 
             header.addEventListener( 'click', () => {
                 const isOpen = item.dataset.open === 'true';
 
-                // Si allowMultiple est false, on ferme tous les autres items
                 if ( ! allowMultiple ) {
                     items.forEach( ( otherItem ) => {
                         if ( otherItem !== item ) {
-                            closeItem( otherItem );
+                            closeItem( otherItem, icon );
                         }
                     } );
                 }
 
-                // On bascule l'état de l'item cliqué
-                isOpen ? closeItem( item ) : openItem( item );
+                isOpen ? closeItem( item, icon ) : openItem( item, icon );
             } );
         } );
     } );
 }
 
-/**
- * Ouvre un item d'accordéon.
- *
- * @param {HTMLElement} item
- */
-function openItem( item ) {
-    const body   = item.querySelector( '.gab-accordion-item__body' );
-    const header = item.querySelector( '.gab-accordion-item__header' );
+function openItem( item, icon ) {
+    const body     = item.querySelector( '.gab-accordion-item__body' );
+    const header   = item.querySelector( '.gab-accordion-item__header' );
+    const iconSpan = item.querySelector( '.gab-accordion-item__icon' );
 
     item.dataset.open = 'true';
     body.removeAttribute( 'hidden' );
     header.setAttribute( 'aria-expanded', 'true' );
+
+    // Met à jour l'icône vers l'état fermé (action disponible = fermer)
+    if ( iconSpan ) iconSpan.textContent = icon.close;
 }
 
-/**
- * Ferme un item d'accordéon.
- *
- * @param {HTMLElement} item
- */
-function closeItem( item ) {
-    const body   = item.querySelector( '.gab-accordion-item__body' );
-    const header = item.querySelector( '.gab-accordion-item__header' );
+function closeItem( item, icon ) {
+    const body     = item.querySelector( '.gab-accordion-item__body' );
+    const header   = item.querySelector( '.gab-accordion-item__header' );
+    const iconSpan = item.querySelector( '.gab-accordion-item__icon' );
 
     item.dataset.open = 'false';
     body.setAttribute( 'hidden', '' );
     header.setAttribute( 'aria-expanded', 'false' );
+
+    // Met à jour l'icône vers l'état ouvert (action disponible = ouvrir)
+    if ( iconSpan ) iconSpan.textContent = icon.open;
 }
 
 document.addEventListener( 'DOMContentLoaded', initAccordions );

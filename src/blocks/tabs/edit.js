@@ -1,4 +1,4 @@
-import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, InnerBlocks, PanelColorSettings } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -8,16 +8,44 @@ const TEMPLATE = [
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
-    const { defaultTab, tabStyle } = attributes;
+    const { defaultTab, tabStyle, textColor, backgroundColor, fontSize } = attributes;
 
     const blockProps = useBlockProps( {
-        // data-tab-style transmis au frontend et utilisé comme modificateur CSS
         'data-tab-style': tabStyle,
+        style: {
+            color:           textColor       || undefined,
+            backgroundColor: backgroundColor || undefined,
+            fontSize:        `${ fontSize }px`,
+        },
     } );
 
     return (
         <>
             <InspectorControls>
+                <PanelColorSettings
+                    title={ __( 'Couleurs', 'gab' ) }
+                    colorSettings={ [
+                        {
+                            value:    textColor,
+                            onChange: ( value ) => setAttributes( { textColor: value } ),
+                            label:    __( 'Texte', 'gab' ),
+                        },
+                        {
+                            value:    backgroundColor,
+                            onChange: ( value ) => setAttributes( { backgroundColor: value } ),
+                            label:    __( 'Arrière-plan', 'gab' ),
+                        },
+                    ] }
+                />
+                <PanelBody title={ __( 'Typographie', 'gab' ) }>
+                    <RangeControl
+                        label={ __( 'Taille du texte (px)', 'gab' ) }
+                        value={ fontSize }
+                        onChange={ ( value ) => setAttributes( { fontSize: value } ) }
+                        min={ 12 }
+                        max={ 24 }
+                    />
+                </PanelBody>
                 <PanelBody title={ __( 'Paramètres', 'gab' ) }>
                     <RangeControl
                         label={ __( 'Onglet actif par défaut', 'gab' ) }
@@ -33,9 +61,9 @@ export default function Edit( { attributes, setAttributes } ) {
                         label={ __( 'Apparence', 'gab' ) }
                         value={ tabStyle }
                         options={ [
-                            { label: 'Underline — ligne sous l\'onglet actif', value: 'underline' },
-                            { label: 'Pills — onglet avec fond arrondi',       value: 'pills' },
-                            { label: 'Bordered — onglet encadré',              value: 'bordered' },
+                            { label: 'Underline', value: 'underline' },
+                            { label: 'Pills',     value: 'pills' },
+                            { label: 'Bordered',  value: 'bordered' },
                         ] }
                         onChange={ ( value ) => setAttributes( { tabStyle: value } ) }
                     />

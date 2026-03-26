@@ -19,6 +19,18 @@
         "tabStyle": {
             "type": "string",
             "default": "underline"
+        },
+        "textColor": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "fontSize": {
+            "type": "number",
+            "default": 16
         }
     },
     "supports": {

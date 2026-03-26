@@ -12,6 +12,18 @@
     "editorStyle": "file:./index.css",
     "style": "file:./style-index.css",
     "attributes": {
+        "textColor": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "fontSize": {
+            "type": "number",
+            "default": 16
+        },
         "icon": {
             "type": "string",
             "default": "plus"
